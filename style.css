@@ -1,5 +1,37 @@
-body { margin: 0; font-family: system-ui, sans-serif; background: #fdf8f0; color: #2b2118; }
+:root {
+  --bg: #fdf8f0;
+  --text: #2b2118;
+  --muted: #6b5d50;
+  --accent: #e8590c;
+  --border: #e6dccf;
+  color-scheme: light;
+}
+
+/* Dark by system setting, unless the visitor picked light. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #14110f;
+    --text: #f3ece4;
+    --muted: #b3a597;
+    --accent: #ff7a33;
+    --border: #3a322b;
+    color-scheme: dark;
+  }
+}
+
+/* Dark by the visitor's choice. */
+:root[data-theme="dark"] {
+  --bg: #14110f;
+  --text: #f3ece4;
+  --muted: #b3a597;
+  --accent: #ff7a33;
+  --border: #3a322b;
+  color-scheme: dark;
+}
+
+body { margin: 0; font-family: system-ui, sans-serif; background: var(--bg); color: var(--text); }
 main { max-width: 36rem; margin: 15vh auto; padding: 0 1.5rem; }
 h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
-.version { display: inline-block; padding: 0.25rem 0.75rem; border-radius: 999px; background: #e8590c; color: #fff; font-weight: 600; }
-@media (prefers-color-scheme: dark) { body { background: #14110f; color: #f3ece4; } }
+p { color: var(--muted); }
+.version { display: inline-block; padding: 0.25rem 0.75rem; border-radius: 999px; background: var(--accent); color: #fff; font-weight: 600; }
+#theme { float: right; padding: 0.4rem 0.8rem; border: 1px solid var(--border); border-radius: 0.5rem; background: transparent; color: var(--text); font: inherit; cursor: pointer; }
